@@ -1,0 +1,29 @@
+﻿@using WebSORT.Models
+@using WebSORT.Models.ForPagination
+@model WebSORT.Models.ForPagination.IndexViewModelPagination
+
+@*подключаем все tag-хелперы*@
+@addTagHelper "*, WebSORT"
+@{
+	ViewData["Title"] = "PaginationWithHelper";
+}
+
+<h2>PaginationWithHelper</h2>
+
+<h1>Список пользователей</h1>
+<page-link page-model="Model.PageViewModel" page-action="PaginationWithHelper"></page-link>
+<table class="table">
+	<tr>
+		<th>Имя</th>
+		<th>Возраст</th>
+		<th>Компания</th>
+	</tr>
+	@foreach (User u in Model.Users)
+	{
+		<tr>
+			<td>@u.Name</td>
+			<td>@u.Age</td>
+			<td>@u.Company.Name</td>
+		</tr>
+	}
+</table>
